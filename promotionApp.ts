@@ -63,7 +63,7 @@ package cso2.ui.promotionObjs
          while(_loc1_ < _loc2_)
          {
             // (_loc4_ = new Object()).imgUrl = "notice/" + this.randomRange(0,6) + ".jpg";
-            (_loc4_ = new Object()).imgUrl = "notice/" + this.randomRange(0,6) + ".jpg";
+            (_loc4_ = new Object()).imgUrl = "notice/" + this.randomRange(0,6).toString() + ".jpg";
             _loc4_.title = "Notice text" + getRandomNumber().toString();
             _loc5_ = new Array();
             (_loc6_ = new Object()).link = "shop";

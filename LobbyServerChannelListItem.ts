@@ -2,10 +2,13 @@ package cso2.ui.lobbyServerObjs
 {
    import cso2.com.gh.controls.BaseTileItem;
    import cso2.ui.SystemHelpPopup;
-   import flash.display.*;
+   import flash.display.Loader;
+   import flash.display.MovieClip;
+   import flash.display.Shape;
    import flash.events.MouseEvent;
    import flash.net.URLRequest;
    import flash.text.TextField;
+   import flash.utils.getTimer;
    
    public class LobbyServerChannelListItem extends BaseTileItem
    {
@@ -59,6 +62,8 @@ package cso2.ui.lobbyServerObjs
       
       override public function setData(param1:Object) : void
       {
+         var aPing:int = 0;
+         var aTime:int = 0;
          var rect:Shape = null;
          var ldr:Loader = null;
          var url:String = null;
@@ -93,20 +98,11 @@ package cso2.ui.lobbyServerObjs
          }
          else
          {
-            rect = new Shape();
-            rect.graphics.beginFill(16777215);
-            rect.graphics.drawRect(0,0,100,100);
-            rect.graphics.endFill();
-            addChild(rect);
-            ldr = new Loader();
-            ldr.mask = rect;
-            url = "pingbar_" + this.randomRange(1,6) + ".png";
-            urlReq = new URLRequest(url);
-            ldr.load(urlReq);
-            addChild(ldr);
+            aTime = getTimer();
+            aPing = getTimer() - aTime;
             this.tfRecommand.text = "CSO2_CHANNEL_01_TAG";
             this.tfName.text = "CSO2_CHANNEL_01_NAME";
-            this.tfEnter.text = "CSO2_UI_CHANNEL_ENTER";
+            this.tfEnter.text = "Ping: " + aPing + " ms.";
             this.tfEnter.textColor = "CSO2_CHANNEL_01_COLOR";
             this.bg.gotoAndStop(2);
          }
